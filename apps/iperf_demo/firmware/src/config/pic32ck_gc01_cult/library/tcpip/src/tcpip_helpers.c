@@ -962,11 +962,10 @@ uint16_t TCPIP_Helper_CalcIPChecksum(const uint8_t* buffer, uint16_t count, uint
     // Return the resulting checksum
     return ~sum.w[0];
 }
-
-#define WORD_ALIGN_MASK 0x00000003
 #if defined(__CORTEX_A) ||  defined(__CORTEX_M)
 void TCPIP_Helper_Memcpy (void *dst, const void *src, size_t len)
 {
+#define WORD_ALIGN_MASK 0x00000003
     uint32_t* dst_32;
     uint32_t* src_32;
     uint8_t* dst_8;
@@ -981,9 +980,7 @@ void TCPIP_Helper_Memcpy (void *dst, const void *src, size_t len)
     remaining_bytes = ((uint32_t)len) & WORD_ALIGN_MASK;  
     while (count-- != 0U)
     {
-        *dst_32 = *src_32;
-         dst_32++;
-         src_32++;
+        *dst_32++ = *src_32++;
     } 
     if(remaining_bytes)
     {
@@ -991,15 +988,14 @@ void TCPIP_Helper_Memcpy (void *dst, const void *src, size_t len)
         src_8 = (uint8_t*)src_32; 
         while (remaining_bytes-- != 0U)
         {
-            *dst_8 = *src_8;
-            dst_8++;
-            src_8++;      
+            *dst_8++ = *src_8++;
         }
     }    
 }   
 #else
 void TCPIP_Helper_Memcpy (void *dst, const void *src, size_t len)
 {
+#define WORD_ALIGN_MASK 0x00000003
     uint32_t* dst_32;
     uint32_t* src_32;
     uint8_t* dst_8;
@@ -1020,9 +1016,7 @@ void TCPIP_Helper_Memcpy (void *dst, const void *src, size_t len)
         remaining_bytes = ((uint32_t)len) & WORD_ALIGN_MASK;  
         while (count-- != 0U)
         {
-            *dst_32 = *src_32;
-             dst_32++;
-             src_32++;
+            *dst_32++ = *src_32++;
         } 
         if(remaining_bytes)
         {
@@ -1030,9 +1024,7 @@ void TCPIP_Helper_Memcpy (void *dst, const void *src, size_t len)
             src_8 = (uint8_t*)src_32; 
             while (remaining_bytes-- != 0U)
             {
-                *dst_8 = *src_8;
-                dst_8++;
-                src_8++;      
+                *dst_8++ = *src_8++;
             }
         }
 
@@ -1145,7 +1137,6 @@ uint16_t TCPIP_Helper_PacketCopy(TCPIP_MAC_PACKET* pSrcPkt, uint8_t* pDest, uint
         if(copyBytes)
         {
             TCPIP_Helper_Memcpy(pDest, pCopyBuff, (uint32_t)copyBytes); 
-            
             pDest += copyBytes;
             copyLen -= copyBytes;
             pSrcBuff = pCopyBuff + copyBytes;

@@ -40,7 +40,6 @@ body {
  */
 .wh_publication_title > a {
   padding: 0.1em 0;
-  text-transform: uppercase;
   font-weight: bold;
   line-height: 1em;
   font-size: 1.8em;
@@ -50,6 +49,22 @@ body {
     padding: 0;
   }
 }
+
+/* 
+ * Edit/Comment button in webhelp
+ */
+
+.editbutton {
+  border: 2px solid green;
+  border-radius: 5px;
+  width: 200px;
+  text-align: center;
+  padding: 7px;
+  background-color: #04aa6d;
+  color: #ffffff;
+  font-weight: bold;
+  }
+
 
 /*
  * ------------------------------------------------------------------
@@ -749,4 +764,19 @@ dl.noboldlist dd {
 }
 .wh_footer {
   margin-top: 0 !important;
+}
+
+.table-container{
+  max-height: 500px;
+  overflow: auto !important;
+}
+
+.table-container tr:nth-child(1) th{
+  position: sticky;
+  top: 0;
+}
+
+.table-container tr:nth-child(2) th{
+  position: sticky;
+  top: 29px;
 }

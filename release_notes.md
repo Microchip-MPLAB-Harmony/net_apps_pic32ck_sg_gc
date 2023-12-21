@@ -7,6 +7,7 @@
 
 ### New Features
 - Support for MAC RX/TX Checksum offload feature
+- Addition of IPERF demo for PIC32CK GC01 Curiosity Ultra.
 
 
 ### Improvements and Bug Fixes

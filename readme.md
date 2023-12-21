@@ -29,6 +29,7 @@ The following applications are provided to demonstrate the typical or interestin
 
 | Name | Description |
 | ---- | ----------- |
+| [iperf_demo](./docs/GUID-8A8AB7EB-AE6C-415D-8019-160AE7DC2E50.html) | This example application shows running iperf and measuring the network performance |
 | [tcpip_tcp_client](./docs/GUID-5E40D04E-DBA0-4956-9A02-1BC5D9B6ED48.html) | This example application shows a TCP Client demo using Harmony native API |
 | [tcpip_tcp_server](./docs/GUID-40D6A3FC-93DB-4291-8C99-8F27EB930E6C.html) | This example application shows a TCP Server demo using Harmony native API |
 | [web_net_server_sdcard_fatfs](./docs/GUID-D2F03FE2-FB49-46AA-9EB9-D402A7ECE4C9.html) | This example application shows a Web server with FAT FS file system on the external SD card |
